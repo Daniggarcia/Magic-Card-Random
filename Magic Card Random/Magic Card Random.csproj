@@ -49,7 +49,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="MtgApiManager.Lib" Version="2.3.3" />
+	  <Folder Include="Components\" />
+	  <Folder Include="Pages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	</ItemGroup>
 
 </Project>
