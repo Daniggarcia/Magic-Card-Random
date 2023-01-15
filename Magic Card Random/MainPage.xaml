@@ -16,7 +16,7 @@
 
             <Label
                 x:Name="lblNameCard"
-                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.HeadingLevel="Level2"
                 FontSize="32"
                 HorizontalOptions="Center" />
 

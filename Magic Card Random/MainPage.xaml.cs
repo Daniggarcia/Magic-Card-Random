@@ -13,25 +13,20 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    protected override void OnDisappearing()
-    {
-        base.OnDisappearing();
-
-        imgCard.Source = null;
-
-    }
-
     protected async override void OnAppearing()
     {
         base.OnAppearing();
 
-        Card card = await _apiService.GetRandomCard();
-        imgCard.Source = new UriImageSource
+        if (imgCard.Source == null)
         {
-            Uri = new Uri(card.image_uris.normal),
-            CachingEnabled = true,
-            CacheValidity = TimeSpan.FromDays(1)
-        };
+            Card card = await _apiService.GetRandomCard();
+            imgCard.Source = new UriImageSource
+            {
+                Uri = new Uri(card.image_uris.normal),
+                CachingEnabled = true,
+                CacheValidity = TimeSpan.FromDays(1)
+            };
+        }
     }
 
     private async void CounterBtn_Clicked(object sender, EventArgs e)
