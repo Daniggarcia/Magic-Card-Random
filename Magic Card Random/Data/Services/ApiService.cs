@@ -6,6 +6,8 @@ namespace Magic_Card_Random.Data.Services
     public class ApiService
     {
         private readonly HttpClient _httpClient;
+        string apiUrl = "https://api.scryfall.com/cards/";
+        string apiUrlRandom = "https://api.scryfall.com/cards/random";
 
         public ApiService()
         {
@@ -14,9 +16,17 @@ namespace Magic_Card_Random.Data.Services
 
         public async Task<Card> GetRandomCard()
         {
-            string url = "https://api.scryfall.com/cards/random";
 
-            using (var response = await _httpClient.GetAsync(url))
+            using (var response = await _httpClient.GetAsync(apiUrlRandom))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Card>(apiResponse);
+            }
+        }
+
+        public async Task<Card> GetCardByName(string name)
+        {
+            using (var response = await _httpClient.GetAsync($"{apiUrl}/named?fuzzy={name}"))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<Card>(apiResponse);
