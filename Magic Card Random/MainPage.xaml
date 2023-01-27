@@ -14,24 +14,33 @@
                 HeightRequest="400"
                 HorizontalOptions="Center" />
 
+            <Line />
+
             <Label
                 x:Name="lblNameCard"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
+                SemanticProperties.HeadingLevel="Level2"
+                FontSize="20"
                 HorizontalOptions="Center" />
+            
+            <Line />
 
             <Label
                 x:Name="lblDescription"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
+                FontSize="15"
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                Clicked="CounterBtn_Clicked"
-                SemanticProperties.Hint="Counts the number of times you click"
+                x:Name="RandomBtn"
+                Text="Oher Random Card"
+                Clicked="RandomBtn_Clicked"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="BackBtn"
+                Text="Back"
+                IsVisible="false"
+                Clicked="BackBtn_Clicked"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

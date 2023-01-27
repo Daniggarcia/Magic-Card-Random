@@ -1,5 +1,6 @@
 ﻿using Magic_Card_Random.Data.Models;
 using Magic_Card_Random.Data.Services;
+using Microsoft.Maui.Graphics;
 
 namespace Magic_Card_Random;
 
@@ -13,30 +14,30 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    protected override void OnDisappearing()
+    public MainPage(Card card)
     {
-        base.OnDisappearing();
-
-        imgCard.Source = null;
-
+        InitializeComponent();
+        BackBtn.IsVisible = true;
+        RandomBtn.IsVisible = false;
+        FavoriteCard(card);
     }
 
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-
-        Card card = await _apiService.GetRandomCard();
-        imgCard.Source = new UriImageSource
+        if (imgCard.Source == null)
         {
-            Uri = new Uri(card.image_uris.normal),
-            CachingEnabled = true,
-            CacheValidity = TimeSpan.FromDays(1)
-        };
+            await ImageCard();
+        }
     }
 
-    private async void CounterBtn_Clicked(object sender, EventArgs e)
+    private async void RandomBtn_Clicked(object sender, EventArgs e)
     {
-        Card card = await _apiService.GetRandomCard();
+        await ImageCard();
+    }
+
+    private void FavoriteCard(Card card)
+    {
         imgCard.Source = new UriImageSource
         {
             Uri = new Uri(card.image_uris.normal),
@@ -44,6 +45,24 @@ public partial class MainPage : ContentPage
             CacheValidity = TimeSpan.FromDays(1)
         };
         lblNameCard.Text = card.nameCard;
+        lblDescription.Text = card.flavor_text;
+    }
+
+    private async void BackBtn_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopModalAsync();
+    }
+
+    private async Task ImageCard()
+    {
+        Card card = await _apiService.GetRandomCard();
+        imgCard.Source = new UriImageSource
+        {
+            Uri = new Uri(card.image_uris.normal),
+            CachingEnabled = true,
+            CacheValidity = TimeSpan.FromDays(1)
+        };
+        lblNameCard.Text = $"{card.nameCard} {card.mana_cost}";
         lblDescription.Text = card.flavor_text;
     }
 }
