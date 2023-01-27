@@ -1,9 +1,16 @@
+using Magic_Card_Random.Data.Models;
+using Magic_Card_Random.Data.Services;
+using System.Xml.Linq;
+
 namespace Magic_Card_Random.Pages;
 
 public partial class AboutMe : ContentPage
 {
+    private ApiService _apiService;
+
     public AboutMe()
     {
+        _apiService = new ApiService();
         InitializeComponent();
     }
 
@@ -41,5 +48,12 @@ public partial class AboutMe : ContentPage
 
         }
         await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+    }
+
+    private async void martonImage_Clicked(object sender, EventArgs e)
+    {
+        var nameCard = "MartonStromgald";
+        Card card = await _apiService.GetCardByName(nameCard);
+        await Navigation.PushModalAsync(new MainPage(card));
     }
 }

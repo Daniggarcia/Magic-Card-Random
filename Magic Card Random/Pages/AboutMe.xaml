@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Magic_Card_Random.Pages.AboutMe">
+             x:Class="Magic_Card_Random.Pages.AboutMe"
+             NavigationPage.BackButtonTitle="Prueba">
 
     <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-        <Image 
+        <ImageButton 
+            x:Name="martonImage"
             Source="martonstrongald.png"
             HorizontalOptions="Center" 
-            Margin="0, 20, 0, 0"/>
+            Margin="0, 20, 0, 0"
+            Clicked="martonImage_Clicked"/>
         <HorizontalStackLayout>
             <Label Text="about" 
                    SemanticProperties.HeadingLevel="Level1"
@@ -20,7 +23,11 @@
         </HorizontalStackLayout>
         <Label Text="Dman as a programmer, Strongald as an alias, hyperactive and eager to create things."
                    SemanticProperties.HeadingLevel="Level2"
-                   FontSize="20"
+                   FontSize="18"
+                   TextColor="{StaticResource White}" VerticalOptions="Center"/>
+        <Label Text="If you want to know which is my favourite card click on the image. If you want to know more about me I leave you my social networks."
+                   SemanticProperties.HeadingLevel="Level2"
+                   FontSize="18"
                    TextColor="{StaticResource White}" VerticalOptions="Center"/>
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
             <ImageButton x:Name="linkedin" WidthRequest="50" HeightRequest="50" Source="linkedin.svg" Clicked="SocialsImageButton_Clicked"/>
