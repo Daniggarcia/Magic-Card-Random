@@ -16,17 +16,29 @@
 
             <Line />
 
-            <Label
-                x:Name="lblNameCard"
-                SemanticProperties.HeadingLevel="Level2"
-                FontSize="20"
-                HorizontalOptions="Center" />
-            
+            <HorizontalStackLayout
+                Spacing="10"
+                HorizontalOptions="Center" >
+
+                <Label
+                    x:Name="lblNameCard"
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="18"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"/>
+
+                <HorizontalStackLayout
+                    x:Name="hslMana" >
+                </HorizontalStackLayout>
+
+            </HorizontalStackLayout>
+
             <Line />
 
             <Label
                 x:Name="lblDescription"
                 SemanticProperties.HeadingLevel="Level2"
+                HorizontalTextAlignment="Center"
                 FontSize="15"
                 HorizontalOptions="Center" />
 
