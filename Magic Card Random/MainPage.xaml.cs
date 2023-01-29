@@ -45,10 +45,7 @@ public partial class MainPage : ContentPage
             CachingEnabled = true,
             CacheValidity = TimeSpan.FromDays(1)
         };
-        lblNameCard.Text = card.nameCard;
-        lblDescription.Text = card.flavor_text;
-        hslMana.Children.Clear();
-
+        FillInfoCard(card);
         GenerateImageManaCard(card);
     }
 
@@ -66,13 +63,12 @@ public partial class MainPage : ContentPage
             CachingEnabled = true,
             CacheValidity = TimeSpan.FromDays(1)
         };
-        lblNameCard.Text = card.nameCard;
-        lblDescription.Text = card.flavor_text;
-        hslMana.Children.Clear();
 
+        FillInfoCard(card);
         GenerateImageManaCard(card);
-
     }
+
+    #region Private Methods
 
     private void GenerateImageManaCard(Card card)
     {
@@ -241,5 +237,92 @@ public partial class MainPage : ContentPage
 
         }
     }
+
+    private void FillInfoCard(Card card)
+    {
+        lblNameCard.Text = card.nameCard;
+        if (!string.IsNullOrEmpty(card.flavor_text))
+        {
+            lblDescription.IsVisible = true;
+            lblDescription.Text = card.flavor_text;
+        }
+        else
+        {
+            lblDescription.Text = string.Empty;
+        }
+
+        lblTypeCard.Text = card.type_line;
+        lblHabilityCard.Text = card.oracle_text;
+        lblNameCardPrice.Text = card.nameCard;
+        if (!string.IsNullOrEmpty(card.prices.usd))
+        {
+            lblPriceUsd.Text = card.prices.usd;
+            lblPriceUsd.IsEnabled = true;
+            lblPriceUsd.IsVisible = true;
+        }
+        else
+        {
+            lblPriceUsd.Text = string.Empty;
+            lblPriceUsd.IsEnabled = false;
+            lblPriceUsd.IsVisible = false;
+        }
+        if (!string.IsNullOrEmpty(card.prices.eur))
+        {
+            lblPriceEu.Text = card.prices.eur;
+            lblPriceEu.IsEnabled = true;
+            lblPriceEu.IsVisible = true;
+        }
+        else
+        {
+            lblPriceEu.Text = string.Empty;
+            lblPriceEu.IsEnabled = false;
+            lblPriceEu.IsVisible = false;
+        }
+        if (!string.IsNullOrEmpty(card.prices.tix))
+        {
+            lblPriceTix.Text = card.prices.tix;
+            lblPriceTix.IsEnabled = true;
+            lblPriceTix.IsVisible = true;
+        }
+        else
+        {
+            lblPriceTix.Text = string.Empty;
+            lblPriceTix.IsEnabled = false;
+            lblPriceTix.IsVisible = false;
+        }
+        hslMana.Children.Clear();
+    }
+
+    private async void lblPrice_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            Card card = await _apiService.GetCardByName(lblNameCard.Text);
+            Button btnPrice = (Button)sender;
+            Uri uri = null;
+
+            switch (btnPrice.StyleClass[0].ToString())
+            {
+                case string a when a.Contains("lblPriceUsd"):
+                    uri = new Uri(card.purchase_uris.tcgplayer);
+                    break;
+                case string a when a.Contains("lblPriceEu"):
+                    uri = new Uri(card.purchase_uris.cardmarket);
+                    break;
+                case string a when a.Contains("lblPriceTix"):
+                    uri = new Uri(card.purchase_uris.cardhoarder);
+                    break;
+                default:
+                    break;
+            }
+            await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    #endregion
 }
 
