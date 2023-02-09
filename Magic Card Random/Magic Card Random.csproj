@@ -32,11 +32,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\logo.png" ForegroundFile="Resources\AppIcon\logo.png" Color="#273238" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+    <MauiSplashScreen Include="Resources\Splash\logo.png" Color="#273238" BaseSize="128,128" />
+    
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -60,5 +60,13 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\Proyectos\.NET\.NET MAUI\Deployments APPs\Magic Card Random\key.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Hu./EbgxtF2H3yuE</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>RandomCardRandom</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Hu./EbgxtF2H3yuE</AndroidSigningKeyPass>
+  </PropertyGroup>
 
 </Project>
