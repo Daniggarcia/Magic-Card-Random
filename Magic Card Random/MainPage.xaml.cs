@@ -1,6 +1,5 @@
 ﻿using Magic_Card_Random.Data.Models;
 using Magic_Card_Random.Data.Services;
-using Microsoft.Maui.Graphics;
 using System.Text.RegularExpressions;
 
 namespace Magic_Card_Random;
