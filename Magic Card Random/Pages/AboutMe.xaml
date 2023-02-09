@@ -4,35 +4,37 @@
              x:Class="Magic_Card_Random.Pages.AboutMe"
              NavigationPage.BackButtonTitle="Prueba">
 
-    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-        <ImageButton 
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+            <ImageButton 
             x:Name="martonImage"
             Source="martonstrongald.png"
             HorizontalOptions="Center" 
             Margin="0, 20, 0, 0"
             Clicked="martonImage_Clicked"/>
-        <HorizontalStackLayout>
-            <Label Text="about" 
+            <HorizontalStackLayout>
+                <Label Text="about" 
                    SemanticProperties.HeadingLevel="Level1"
                    FontSize="32"
                    TextColor="{StaticResource White}"/>
-            <Label Text=" me"
+                <Label Text=" me"
                    SemanticProperties.HeadingLevel="Level1"
                    FontSize="32"
                    TextColor="{StaticResource Tertiary}"/>
-        </HorizontalStackLayout>
-        <Label Text="Dman as a programmer, Strongald as an alias, hyperactive and eager to create things."
+            </HorizontalStackLayout>
+            <Label Text="Dman as a programmer, Strongald as an alias, hyperactive and eager to create things."
                    SemanticProperties.HeadingLevel="Level2"
                    FontSize="18"
                    TextColor="{StaticResource White}" VerticalOptions="Center"/>
-        <Label Text="If you want to know which is my favourite card click on the image. If you want to know more about me I leave you my social networks."
+            <Label Text="If you want to know which is my favourite card click on the image. If you want to know more about me I leave you my social networks."
                    SemanticProperties.HeadingLevel="Level2"
                    FontSize="18"
                    TextColor="{StaticResource White}" VerticalOptions="Center"/>
-        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-            <ImageButton x:Name="linkedin" WidthRequest="50" HeightRequest="50" Source="linkedin.svg" Clicked="SocialsImageButton_Clicked"/>
-            <ImageButton x:Name="github" WidthRequest="50" HeightRequest="50" Source="github.svg" Clicked="SocialsImageButton_Clicked"/>
-            <ImageButton x:Name="email" WidthRequest="50" HeightRequest="50" Source="envelopesolid.svg" Clicked="SocialsImageButton_Clicked"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <ImageButton x:Name="linkedin" WidthRequest="50" HeightRequest="50" Source="linkedin.svg" Clicked="SocialsImageButton_Clicked"/>
+                <ImageButton x:Name="github" WidthRequest="50" HeightRequest="50" Source="github.svg" Clicked="SocialsImageButton_Clicked"/>
+                <ImageButton x:Name="email" WidthRequest="50" HeightRequest="50" Source="envelopesolid.svg" Clicked="SocialsImageButton_Clicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
