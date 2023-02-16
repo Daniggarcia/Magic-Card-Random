@@ -19,7 +19,7 @@
 		<ApplicationIdGuid>63d4fcca-20da-44ff-81e8-70522821f87e</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -64,10 +64,45 @@
 
   <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
     <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>D:\Proyectos\.NET\.NET MAUI\Deployments APPs\Magic Card Random\key.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>Hu./EbgxtF2H3yuE</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>RandomCardRandom</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>Hu./EbgxtF2H3yuE</AndroidSigningKeyPass>
+    <AndroidSigningKeyStore>D:\Proyectos\.NET\.NET MAUI\Magic Card Random\key.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>kaos132v</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>MauiRandomCardRandom</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>kaos132v</AndroidSigningKeyPass>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+    <AndroidUseAapt2>True</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
   </PropertyGroup>
 
 </Project>
