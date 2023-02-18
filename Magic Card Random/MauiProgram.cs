@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Handlers;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 
 namespace Magic_Card_Random;
@@ -10,6 +11,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

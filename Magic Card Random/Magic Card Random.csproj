@@ -19,7 +19,7 @@
 		<ApplicationIdGuid>63d4fcca-20da-44ff-81e8-70522821f87e</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -32,11 +32,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\logo.png" ForegroundFile="Resources\AppIcon\logo.png" Color="#273238" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+    <MauiSplashScreen Include="Resources\Splash\logo.png" Color="#273238" BaseSize="128,128" />
+    
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -49,10 +49,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Components\" />
-	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	</ItemGroup>
 
@@ -61,5 +61,48 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\Proyectos\.NET\.NET MAUI\Magic Card Random\key.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>kaos132v</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>MauiRandomCardRandom</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>kaos132v</AndroidSigningKeyPass>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+    <AndroidUseAapt2>True</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
+    <ApplicationId>com.companyname.magicCardRandom</ApplicationId>
+  </PropertyGroup>
 
 </Project>
