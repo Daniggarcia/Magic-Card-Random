@@ -14,6 +14,12 @@
                 Route="MainPage"
                 /> 
         </Tab>
+        <Tab Title="Search Card" Icon="search.svg">
+            <ShellContent 
+                ContentTemplate="{DataTemplate pages:Search}"
+                Route="Search"
+                />
+        </Tab>
         <Tab Title="Information" Icon="usersolid.svg">
             <ShellContent 
                 ContentTemplate="{DataTemplate pages:AboutMe}"

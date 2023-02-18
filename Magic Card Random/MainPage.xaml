@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             x:Class="Magic_Card_Random.MainPage">
+             x:Class="Magic_Card_Random.MainPage"
+             Shell.NavBarIsVisible="False">
 
     <Page.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#273238" />
     </Page.Behaviors>
-    
+
     <ScrollView>
         <VerticalStackLayout
             Spacing="8"

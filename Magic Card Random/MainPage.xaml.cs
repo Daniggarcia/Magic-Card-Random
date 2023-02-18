@@ -16,6 +16,7 @@ public partial class MainPage : ContentPage
 
     public MainPage(Card card)
     {
+        _apiService = new ApiService();
         InitializeComponent();
         BackBtn.IsVisible = true;
         RandomBtn.IsVisible = false;
@@ -50,7 +51,7 @@ public partial class MainPage : ContentPage
 
     private async void BackBtn_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopModalAsync();
+        await Navigation.PopAsync();
     }
 
     private async Task ImageCard()

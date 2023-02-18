@@ -54,6 +54,6 @@ public partial class AboutMe : ContentPage
     {
         var nameCard = "MartonStromgald";
         Card card = await _apiService.GetCardByName(nameCard);
-        await Navigation.PushModalAsync(new MainPage(card));
+        await Navigation.PushAsync(new MainPage(card));
     }
 }
