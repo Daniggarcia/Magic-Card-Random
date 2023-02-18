@@ -17,7 +17,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-            <SearchBar x:Name="searchBar" Keyboard="Text" SearchButtonPressed="searchBar_SearchButtonPressed" Placeholder="Search a card..."></SearchBar>
+            <SearchBar x:Name="searchBar" Keyboard="Text" CancelButtonColor="{StaticResource Primary}"  SearchButtonPressed="searchBar_SearchButtonPressed" Placeholder="Search a card..."></SearchBar>
 
             <Label x:Name="lblNotFound" Text="Card Not Found" IsVisible="false"/>
 
